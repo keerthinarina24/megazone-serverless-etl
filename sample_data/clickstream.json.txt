@@ -1,6 +1,0 @@
-{
-  "user_id": "u1001",
-  "event_type": "checkout",
-  "product_id": "p555",
-  "timestamp": "2025-01-01T10:00:00Z"
-}
