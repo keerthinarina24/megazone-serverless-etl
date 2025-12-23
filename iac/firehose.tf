@@ -5,9 +5,7 @@ resource "aws_iam_role" "firehose_role" {
     Version = "2012-10-17"
     Statement = [{
       Effect = "Allow"
-      Principal = {
-        Service = "firehose.amazonaws.com"
-      }
+      Principal = { Service = "firehose.amazonaws.com" }
       Action = "sts:AssumeRole"
     }]
   })
@@ -27,8 +25,7 @@ resource "aws_kinesis_firehose_delivery_stream" "clickstream" {
     bucket_arn = aws_s3_bucket.raw_bucket.arn
 
     prefix = "year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/"
-
-    buffering_interval = 300
     buffering_size     = 5
+    buffering_interval = 300
   }
 }
