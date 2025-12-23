@@ -226,71 +226,51 @@ Generate insights for business intelligence use cases
 
 
 
-Monitoring and Observability
+
+
+\## Monitoring and Observability
 
 
 
-AWS Glue job execution metrics and logs are available in Amazon CloudWatch
+\- AWS Glue job logs and metrics are available in Amazon CloudWatch
+
+\- Kinesis Firehose delivery success and failure metrics can be monitored via CloudWatch
+
+\- Failed Firehose records can be routed to S3 error prefixes for investigation
+
+\- These metrics enable alerting, operational visibility, and faster incident resolution
 
 
 
-Kinesis Data Firehose delivery success and failure metrics can be monitored via CloudWatch
+\## Production Improvements (Future Enhancements)
 
 
 
-Failed Firehose records can be routed to S3 error prefixes for troubleshooting
+If deployed in a production environment, the following improvements would be implemented:
+
+\- Dead-letter queues (DLQ) for failed Firehose records
+
+\- Data quality checks using AWS Glue Data Quality or Great Expectations
+
+\- CI/CD pipelines for Terraform using GitHub Actions
+
+\- Fine-grained IAM permissions and restrictive S3 bucket policies
+
+\- Cost monitoring using AWS Cost Explorer and Athena query metrics
 
 
 
-These metrics enable alerting, operational visibility, and faster incident resolution in production environments
+\## Results
 
 
 
-Production Improvements (Future Enhancements)
+\- Fully serverless architecture with zero infrastructure management
 
+\- Scalable ingestion capable of handling high-volume clickstream events
 
+\- Optimized analytics using partitioned Parquet and Amazon Athena
 
-If deployed in a production environment, the following enhancements would be implemented:
-
-
-
-Dead-letter queues (DLQ) for failed Firehose records
-
-
-
-Data quality checks using AWS Glue Data Quality or Great Expectations
-
-
-
-CI/CD pipelines for Terraform using GitHub Actions
-
-
-
-Fine-grained IAM permissions and restrictive S3 bucket policies
-
-
-
-Cost monitoring and optimization using AWS Cost Explorer and Athena query metrics
-
-
-
-Results
-
-
-
-Fully serverless architecture with zero infrastructure management
-
-
-
-Scalable ingestion capable of handling high-volume clickstream events
-
-
-
-Optimized analytics using partitioned Parquet and Amazon Athena
-
-
-
-Reproducible and consistent environments using Infrastructure as Code
+\- Reproducible environments using Infrastructure as Code (Terraform)
 
 
 

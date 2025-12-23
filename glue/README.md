@@ -6,3 +6,7 @@ This Glue job:
 
 \- Writes transformed data in Parquet format
 
+
+
+
+
