@@ -154,27 +154,19 @@ Data Transformation (AWS Glue)
 
 
 
-The AWS Glue ETL job performs the following steps:
+The Glue ETL job performs the following:
+
+1\. Reads raw JSON clickstream data from S3
+
+2\. Selects required business fields
+
+3\. Derives partition columns (year, month, day) from event timestamps
+
+4\. Writes optimized Parquet files partitioned by year/month/day
 
 
 
-Reads raw JSON clickstream data from the S3 raw zone
-
-
-
-Selects relevant business fields
-
-
-
-Adds partition columns (year, month, day) derived from event timestamps
-
-
-
-Writes optimized partitioned Parquet files to the processed S3 zone
-
-
-
-Partitioning significantly improves Athena query performance and reduces scan costs.
+Partitioning significantly improves Amazon Athena query performance and reduces scan cost by enabling partition pruning.
 
 
 
@@ -232,13 +224,15 @@ Generate insights for business intelligence use cases
 
 
 
-\- AWS Glue job logs and metrics are available in Amazon CloudWatch
+\## Monitoring and Observability
+
+
+
+\- AWS Glue job execution metrics and logs are available in Amazon CloudWatch
 
 \- Kinesis Firehose delivery success and failure metrics can be monitored via CloudWatch
 
-\- Failed Firehose records can be routed to S3 error prefixes for investigation
-
-\- These metrics enable alerting, operational visibility, and faster incident resolution
+\- Failed records can be routed to S3 error prefixes for investigation
 
 
 
@@ -246,15 +240,11 @@ Generate insights for business intelligence use cases
 
 
 
-If deployed in a production environment, the following improvements would be implemented:
-
-\- Dead-letter queues (DLQ) for failed Firehose records
+\- Dead-letter queues for failed Firehose records
 
 \- Data quality checks using AWS Glue Data Quality or Great Expectations
 
 \- CI/CD pipelines for Terraform using GitHub Actions
-
-\- Fine-grained IAM permissions and restrictive S3 bucket policies
 
 \- Cost monitoring using AWS Cost Explorer and Athena query metrics
 
